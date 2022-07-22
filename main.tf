@@ -40,7 +40,7 @@ module "service-setup" {
 
 
 module "dscs-diag" {
-  source  = "infinera/diagnostics/device//dscs-diag"
+  source  = "infinera/device-diagnostics/infinera//dscs-diag"
   version = "0.0.1"
   
 
@@ -56,7 +56,7 @@ module "dscs-diag" {
 module "carrier-diag" {
   depends_on        = [module.bandwidth-setup]
  # source            =  "./carrier-diag"
-  source  = "infinera/diagnostics/device//carrier-diag"
+  source  = "infinera/device-diagnostics/infinera//carrier-diag"
   version = "0.0.1"
   hub_names         = var.hub_names
   hub-leaf-carrier-diag = var.hub-leaf-carrier-diag
@@ -65,7 +65,7 @@ module "carrier-diag" {
 module "ethernet-loopback-diag" {
   depends_on        = [module.bandwidth-setup]
   #source            =  "./ethernet-loopback-diag"
-  source  = "infinera/diagnostics/device//ethernet-loopback-diag"
+  source  = "infinera/device-diagnostics/infinera//ethernet-loopback-diag"
   version = "0.0.1"
   ethernet-loopback-diag = var.ethernet-loopback-diag
 }
