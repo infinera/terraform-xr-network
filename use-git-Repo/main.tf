@@ -5,10 +5,8 @@
 
 
 module "network-setup" {
-#  source     = "infinera/xr-network/infinera//network-setup"
-#  version = "0.0.1"
 
-  source = "git::https://github.com/infinera/terraform-xr-modules.git//network-setup"
+  source = "git::https://github.com/infinera/terraform-infinera-xr-network.git//network-setup?ref=v0.0.2"
 
   hub_names  = var.hub_names
   leaf_names = var.leaf_names
@@ -18,11 +16,7 @@ module "network-setup" {
 module "bandwidth-setup" {
   depends_on        = [module.network-setup]
 
-#  source     = "infinera/xr-network/infinera//bandwidth-setup"
-#  version = "0.0.1"
-
-  source = "git::https://github.com/infinera/terraform-xr-modules.git//bandwidth-setup"
-
+  source = "git::https://github.com/infinera/terraform-infinera-xr-network.git//bandwidth-setup?ref=v0.0.2"
 
   hub_names         = var.hub_names
   leaf_names        = var.leaf_names
@@ -34,11 +28,7 @@ module "bandwidth-setup" {
 module "service-setup" {
   depends_on        = [module.bandwidth-setup]
 
-#  source     = "infinera/xr-network/infinera//service-setup"
-#  version = "0.0.1"
-
-  source = "git::https://github.com/infinera/terraform-xr-modules.git//service-setup"
-
+  source = "git::https://github.com/infinera/terraform-infinera-xr-network.git//service-setup?ref=v0.0.2"
 
   hub_names         = var.hub_names
   leaf_names        = var.leaf_names
@@ -46,7 +36,7 @@ module "service-setup" {
   client-2-dscg     = var.client-2-dscg
 }
 
-
+/*
 module "dscs-diag" {
 #  source  = "infinera/device-diagnostics/infinera//dscs-diag"
 #  version = "0.0.1"
@@ -86,8 +76,7 @@ module "ethernet-loopback-diag" {
   depends_on        = [module.bandwidth-setup]
   source            =  "./ethernet-prbs-diag"
   ethernet-prbs-diag = var.ethernet-prbs-diag
-}*/
-/** xr.cfg **/
+}
 
 
 output "bandwidth-setup" {
@@ -109,6 +98,6 @@ output "ethernet-loopback-diag" {
 /*output "ethernet-prbs-diag" {
   value = module.ethernet-prbs-diag
 }
-/* */
+*/
 
 
