@@ -7,16 +7,10 @@ terraform {
   // required_version = "~> 1.1.3"
 }
 
-#provider "xrcm" {
-#  username = "dev"
-#  password = "xrSysArch3"
-#  host     = "https://sv-kube-prd.infinera.com:443"
-#}
-
 provider "xrcm" {
-  username = "dev"
-  password = "xrSysArch3"
-  host     = "https://10.100.204.48:7443"
+  username = xxx
+  password = xxx
+  host     = "https://0.0.0.0:ABC"
 }
 
 
