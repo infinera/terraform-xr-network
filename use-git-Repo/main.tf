@@ -3,101 +3,29 @@
 // bandwidht
 // service
 
-
+terraform {
+  experiments = [module_variable_optional_attrs]
+}
 module "network-setup" {
-
-  source = "git::https://github.com/infinera/terraform-infinera-xr-network.git//network-setup?ref=v0.0.2"
-
+  source = "git::https://github.com/infinera/terraform-infinera-xr-network.git//network-setup?ref=v0.0.3"
   hub_names  = var.hub_names
   leaf_names = var.leaf_names
+  trafficmode = var.trafficmode
 }
-
-
 module "bandwidth-setup" {
   depends_on        = [module.network-setup]
-
-  source = "git::https://github.com/infinera/terraform-infinera-xr-network.git//bandwidth-setup?ref=v0.0.2"
-
+  source = "git::https://github.com/infinera/terraform-infinera-xr-network.git//bandwidth-setup?ref=v0.0.3"
   hub_names         = var.hub_names
   leaf_names        = var.leaf_names
-  leaf-2-hub-dscids = var.leaf-2-hub-dscids
-
+  leaf_bandwidth = var.leaf_bandwidth
+  hub_bandwidth = var.hub_bandwidth
+  trafficmode = var.trafficmode
 }
-
-
 module "service-setup" {
   depends_on        = [module.bandwidth-setup]
-
-  source = "git::https://github.com/infinera/terraform-infinera-xr-network.git//service-setup?ref=v0.0.2"
-
+  source = "git::https://github.com/infinera/terraform-infinera-xr-network.git//service-setup?ref=v0.0.3"
   hub_names         = var.hub_names
   leaf_names        = var.leaf_names
-  leaf-2-hub-dscids = var.leaf-2-hub-dscids
   client-2-dscg     = var.client-2-dscg
+  trafficmode = var.trafficmode
 }
-
-/*
-module "dscs-diag" {
-#  source  = "infinera/device-diagnostics/infinera//dscs-diag"
-#  version = "0.0.1"
-  
-
-  source = "git::https://github.com/infinera/terraform-xr-modules.git//dscs-diag"
-
-  depends_on        = [module.bandwidth-setup]
-  //source            = "./dscs-diag"
-  hub_names         = var.hub_names
-  leaf-2-hub-dscids = var.leaf-2-hub-dscids
-  hub-leaf-dscs-diag = var.hub-leaf-dscs-diag
-}
-
-module "carrier-diag" {
-  depends_on        = [module.bandwidth-setup]
- # source            =  "./carrier-diag"
- # source  = "infinera/device-diagnostics/infinera//carrier-diag"
-  source = "git::https://github.com/infinera/terraform-xr-modules.git//carrier-diag"
-  #version = "0.0.1"
-  hub_names         = var.hub_names
-  hub-leaf-carrier-diag = var.hub-leaf-carrier-diag
-}
-
-module "ethernet-loopback-diag" {
-  depends_on        = [module.bandwidth-setup]
-  #source            =  "./ethernet-loopback-diag"
-  source = "git::https://github.com/infinera/terraform-xr-modules.git//ethernet-loopback-diag"
-  #source  = "infinera/device-diagnostics/infinera//ethernet-loopback-diag"
-  #version = "0.0.1"
-  ethernet-loopback-diag = var.ethernet-loopback-diag
-}
-
-
-
-/*module "ethernet-prbs-diag" {
-  depends_on        = [module.bandwidth-setup]
-  source            =  "./ethernet-prbs-diag"
-  ethernet-prbs-diag = var.ethernet-prbs-diag
-}
-
-
-output "bandwidth-setup" {
-  value = module.bandwidth-setup.hub-dscgs
-}
-
-output "dsc-diag" {
-  value = module.dscs-diag
-}
-
-output "carrier-diag" {
-  value = module.carrier-diag
-}
-
-output "ethernet-loopback-diag" {
-  value = module.ethernet-loopback-diag
-}
-
-/*output "ethernet-prbs-diag" {
-  value = module.ethernet-prbs-diag
-}
-*/
-
-
