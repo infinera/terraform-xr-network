@@ -13,4 +13,8 @@ provider "xrcm" {
   host     = "https://sv-kube-prd.infinera.com:443"
 }
 
-
+#provider "xrcm" {
+# username = "dev"
+#  password = "xrSysArch3"
+#  host     = "https://10.100.204.48:7443"
+#}

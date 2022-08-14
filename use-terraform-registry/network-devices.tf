@@ -5,7 +5,7 @@
 
 variable "hub_names" {
   type        = list(string)
-  default     = ["XR-SFO_12-Hub"]
+  default     = ["xr-regA_H1-Hub"]
   description = "Add hub name, only one entry supported"
 }
 
@@ -14,16 +14,11 @@ variable "hub_names" {
 variable "leaf_names" {
   type = list(string)
   default = [
-    "XR-SFO_12-1",
-    "XR-SFO_12-2",
-    "XR-SFO_12-3",
-    "XR-SFO_12-4",
-    "XR-SFO_12-5",
-    "XR-SFO_12-6",
-    "XR-SFO_12-7",
-    "XR-SFO_12-8"
-    /**/
-  ]
+  "xr-regA_H1-L1",
+  "xr-regA_H1-L2",
+  "xr-regA_H1-L3",
+  "xr-regA_H1-L4"
+]
   description = "Add/Remove - leaf_names - upto 16 entires"
 }
 
@@ -41,13 +36,13 @@ variable "hub_bandwidth" {
   })))
   description = "Defines the bandwidth to provisioned between Hub and each leaf. For each leaf, define the hub dscids to be assigned to the BW, and the hubdscgid and leafdscgid to be use to create the DSCG. Creates Hub and Leaf DSCGs"
   default = {
-
-    XR-SFO_12-Hub = { // For each DSCG create a entry, ds = hubdscidlist, us = leafdscidlist. 
-      // for each dsc specified in hubdscidlist THD tx, rx enabled
-      XR-SFO_12-Hub-BW5173ds = { hubdscgid = "1", leafdscgid = "1", hubdscidlist = ["5", "1", "7", "3"], leafdscidlist = ["1", "2", "3", "4"], direction = "ds" }
-      XR-SFO_12-Hub-BW2468ds = { hubdscgid = "2", leafdscgid = "1", hubdscidlist = ["2", "4", "6", "8"], leafdscidlist = ["1", "2", "3", "4"], direction = "ds" },
-    },
+  xr-regA_H1-Hub = {
+    xr-regA_H1-Hub-BW1 = { hubdscgid = "1", leafdscgid = "1", hubdscidlist = ["5", "1", "7", "3"], leafdscidlist = ["1", "2", "3", "4"], direction = "ds" },
+    xr-regA_H1-Hub-BW2 = { hubdscgid = "2", leafdscgid = "1", hubdscidlist = ["9", "11", "13", "15"], leafdscidlist = ["1", "2", "3", "4"], direction = "ds" },
+    xr-regA_H1-Hub-BW3 = { hubdscgid = "3", leafdscgid = "1", hubdscidlist = ["2", "4", "6", "8"], leafdscidlist = ["1", "2", "3", "4"], direction = "ds" },
+    xr-regA_H1-Hub-BW4 = { hubdscgid = "4", leafdscgid = "1", hubdscidlist = ["14", "10", "12", "16"], leafdscidlist = ["1", "2", "3", "4"], direction = "ds" }
   }
+}
 
 }
 
@@ -63,35 +58,19 @@ variable "leaf_bandwidth" {
   })))
   description = "Defines the bandwidth to provisioned between Hub and each leaf. For each leaf, define the hub dscids to be assigned to the BW, and the hubdscgid and leafdscgid to be use to create the DSCG. Creates Hub and Leaf DSCGs"
   default = {
-    XR-SFO_12-1 = {       
-      XR-SFO_12-Hub-BW5173ds = { hubdscgid = "3", leafdscgid = "2", hubdscidlist = ["5"], leafdscidlist = ["1"], direction = "us" }
-    }
-    XR-SFO_12-2 = {
-       XR-SFO_12-Hub-BW5173ds = { hubdscgid = "4", leafdscgid = "2", hubdscidlist = ["1"], leafdscidlist = ["1"], direction = "us" }
-    }
-    XR-SFO_12-3 = {
-       XR-SFO_12-Hub-BW5173ds = { hubdscgid = "6", leafdscgid = "2", hubdscidlist = ["7"], leafdscidlist = ["1"], direction = "us" }
-    }
-    XR-SFO_12-4 = {
-      XR-SFO_12-Hub-BW5173ds = { hubdscgid = "8", leafdscgid = "2", hubdscidlist = ["3"], leafdscidlist = ["1"], direction = "us" }
-    }
-
-    XR-SFO_12-5 = {
-       XR-SFO_12-Hub-BW2468ds = { hubdscgid = "10", leafdscgid = "2", hubdscidlist = ["2"], leafdscidlist = ["1"], direction = "us" }
-    }
-    XR-SFO_12-6 = {
-      XR-SFO_12-Hub-BW2468ds = { hubdscgid = "12", leafdscgid = "2", hubdscidlist = ["4"], leafdscidlist = ["1"], direction = "us" }
-    }
-    XR-SFO_12-7 = {
-      XR-SFO_12-Hub-BW2468ds = { hubdscgid = "14", leafdscgid = "2", hubdscidlist = ["6"], leafdscidlist = ["1"], direction = "us" }
-    }
-    XR-SFO_12-8 = {
-      XR-SFO_12-Hub-BW2468ds = { hubdscgid = "16", leafdscgid = "2", hubdscidlist = ["8"], leafdscidlist = ["1"], direction = "us" }
-
-    }
+  xr-regA_H1-L1 = {
+    xr-regA_H1-Hub-BW1 = { hubdscgid = "1", leafdscgid = "1", hubdscidlist = ["5", "1", "7", "3"], leafdscidlist = ["1", "2", "3", "4"], direction = "us" }
   }
-
-
+  xr-regA_H1-L2 = {
+    xr-regA_H1-Hub-BW2 = { hubdscgid = "2", leafdscgid = "1", hubdscidlist = ["9", "11", "13", "15"], leafdscidlist = ["1", "2", "3", "4"], direction = "us" }
+  }
+  xr-regA_H1-L3 = {
+    xr-regA_H1-Hub-BW3 = { hubdscgid = "3", leafdscgid = "1", hubdscidlist = ["2", "4", "6", "8"], leafdscidlist = ["1", "2", "3", "4"], direction = "us" }
+  }
+  xr-regA_H1-L4 = {
+    xr-regA_H1-Hub-BW4 = { hubdscgid = "4", leafdscgid = "1", hubdscidlist = ["14", "10", "12", "16"], leafdscidlist = ["1", "2", "3", "4"], direction = "us" }
+  }
+}
 }
 
 
@@ -120,7 +99,7 @@ variable "client-2-dscg" {
 
 
   default = {
-      XR-SFO_12-Hub = {
+      xr-regA_H1-Hub = {
       lc-XR-SFO_12-1234-1-ds = { // hub tx -> leaf 1/2/3/4 - 100G Shared downstream
         clientid = "1"        
         dscgid   = "1" 
@@ -223,7 +202,7 @@ variable "client-2-dscg" {
         },       
     }, // end Hub AC/LCs
     XR-SFO_12-1 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 1 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 1 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"     
         lctype = "uniDirDs"
@@ -233,7 +212,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "100" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 1 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 1 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"      
         lctype = "uniDirUs"
@@ -245,7 +224,7 @@ variable "client-2-dscg" {
       }      
     },
     XR-SFO_12-2 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 2 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 2 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"    
         lctype = "uniDirDs"
@@ -255,7 +234,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "200" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 2 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 2 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"    
         lctype = "uniDirUs"
@@ -267,7 +246,7 @@ variable "client-2-dscg" {
       }      
     },
     XR-SFO_12-3 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 3 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 3 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"     
         lctype = "uniDirDs"
@@ -277,7 +256,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "300" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 3 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 3 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"
         lctype = "uniDirUs"      
@@ -289,7 +268,7 @@ variable "client-2-dscg" {
       }      
     },  
     XR-SFO_12-4 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 4 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 4 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
@@ -299,7 +278,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "400" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 4 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 4 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"        
         lctype = "uniDirUs"
@@ -311,7 +290,7 @@ variable "client-2-dscg" {
       }      
     },
     XR-SFO_12-5 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 5 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 5 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
@@ -321,7 +300,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "500" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 5 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 5 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"
         lctype = "uniDirUs"
@@ -333,7 +312,7 @@ variable "client-2-dscg" {
       }      
     },      
     XR-SFO_12-6 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 6 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 6 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
@@ -343,7 +322,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "600" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 6 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 6 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"        
         lctype = "uniDirUs"
@@ -355,7 +334,7 @@ variable "client-2-dscg" {
       }      
     }, 
     XR-SFO_12-7 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 7 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 7 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
@@ -365,7 +344,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "700" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 7 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 7 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"       
         lctype = "uniDirUs"
@@ -377,7 +356,7 @@ variable "client-2-dscg" {
       }      
     }, 
     XR-SFO_12-8 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 8 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 8 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
@@ -387,7 +366,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "800" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 8 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 8 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"     
         lctype = "uniDirUs"
@@ -398,7 +377,7 @@ variable "client-2-dscg" {
         emc_outer_vid = "" 
       }      
     } 
-    XR-SFO_12-Hub = {
+    xr-regA_H1-Hub = {
       lc-XR-SFO_12-1234-1-ds = { // hub tx -> leaf 1/2/3/4 - 100G Shared downstream
         clientid = "1"        
         dscgid   = "1" 
@@ -501,7 +480,7 @@ variable "client-2-dscg" {
         },       
     }, // end Hub AC/LCs
     XR-SFO_12-1 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 1 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 1 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"     
         lctype = "uniDirDs"
@@ -511,7 +490,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "100" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 1 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 1 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"      
         lctype = "uniDirUs"
@@ -523,7 +502,7 @@ variable "client-2-dscg" {
       }      
     },
     XR-SFO_12-2 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 2 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 2 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"    
         lctype = "uniDirDs"
@@ -533,7 +512,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "200" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 2 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 2 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"    
         lctype = "uniDirUs"
@@ -545,7 +524,7 @@ variable "client-2-dscg" {
       }      
     },
     XR-SFO_12-3 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 3 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 3 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"     
         lctype = "uniDirDs"
@@ -555,7 +534,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "300" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 3 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 3 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"
         lctype = "uniDirUs"      
@@ -567,7 +546,7 @@ variable "client-2-dscg" {
       }      
     },  
     XR-SFO_12-4 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 4 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 4 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
@@ -577,7 +556,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "400" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 4 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 4 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"        
         lctype = "uniDirUs"
@@ -589,7 +568,7 @@ variable "client-2-dscg" {
       }      
     },
     XR-SFO_12-5 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 5 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 5 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
@@ -599,7 +578,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "500" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 5 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 5 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"
         lctype = "uniDirUs"
@@ -611,7 +590,7 @@ variable "client-2-dscg" {
       }      
     },      
     XR-SFO_12-6 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 6 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 6 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
@@ -621,7 +600,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "600" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 6 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 6 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"        
         lctype = "uniDirUs"
@@ -633,7 +612,7 @@ variable "client-2-dscg" {
       }      
     }, 
     XR-SFO_12-7 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 7 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 7 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
@@ -643,7 +622,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "700" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 7 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 7 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"       
         lctype = "uniDirUs"
@@ -655,7 +634,7 @@ variable "client-2-dscg" {
       }      
     }, 
     XR-SFO_12-8 = {
-      lc-XR-SFO_12-Hub-ds-1 = { // leaf 8 rcv <- hub, 100G shared DS 
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 8 rcv <- hub, 100G shared DS 
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
@@ -665,7 +644,7 @@ variable "client-2-dscg" {
         emc = "MatchOuterVID"
         emc_outer_vid = "800" 
       },
-      lc-XR-SFO_12-Hub-us-1 = { // leaf 8 tx -> hub, 25G shared DS 
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 8 tx -> hub, 25G shared DS 
         clientid = "1"        
         dscgid   = "2"     
         lctype = "uniDirUs"
