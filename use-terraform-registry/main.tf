@@ -11,7 +11,7 @@ terraform {
 
 module "network-setup" {
   source  = "infinera/xr-modules/infinera//network-setup"
-  version = "0.0.3"
+  version = "0.0.4"
 
   hub_names  = var.hub_names
   leaf_names = var.leaf_names
@@ -20,7 +20,7 @@ module "network-setup" {
 module "bandwidth-setup" {
   depends_on        = [module.network-setup]
   source  = "infinera/xr-modules/infinera//bandwidth-setup"
-  version = "0.0.3"
+  version = "0.0.4"
 
   hub_names         = var.hub_names
   leaf_names        = var.leaf_names
@@ -31,7 +31,7 @@ module "bandwidth-setup" {
 module "service-setup" {
   depends_on        = [module.bandwidth-setup]
   source  = "infinera/xr-modules/infinera//service-setup"
-  version = "0.0.3"
+  version = "0.0.4"
 
   hub_names         = var.hub_names
   leaf_names        = var.leaf_names
