@@ -9,8 +9,8 @@ terraform {
 
 
 provider "xrcm" {
-  username = "xxx"
-  password = "xxx"
-  host     = "https://x.x.x.x:ABC"
+  username = var.user
+  password = var.password
+  host     = var.host
 }
 
