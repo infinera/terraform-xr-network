@@ -110,7 +110,7 @@ variable "client-2-dscg" {
     clientid = string
     dscgid   = string    
     lctype = optional(string)
-    rate = optional(number)
+    capacity = optional(number)
     imc = optional(string)
     imc_outer_vid = optional(string)
     emc = optional(string)

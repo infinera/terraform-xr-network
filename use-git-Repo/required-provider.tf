@@ -9,8 +9,8 @@ terraform {
 
 
 provider "xrcm" {
-  username = "xxx"
-  password = "xxx"
-  host     = "https://x.x.x.x:ABC"
+  username = "dev"
+  password = "xrSysArch3"
+  host     = "https://sv-kube-prd.infinera.com:443"
 }
 
