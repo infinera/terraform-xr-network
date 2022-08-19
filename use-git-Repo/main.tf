@@ -29,3 +29,28 @@ module "service-setup" {
   client-2-dscg     = var.client-2-dscg
   trafficmode = var.trafficmode
 }
+
+/*
+module "dscs-diag" {
+  source = "./dscs-diag2"
+  lineptpid = 1
+  carrierid = 1
+  dscstest = var.dscstest
+}
+
+/*module "carrier-diag" {
+  source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//carrier-diag"
+
+ // depends_on        = [module.bandwidth-setup]
+  
+  hub_names         = var.hub_names
+  hub-leaf-carrier-diag = var.hub-leaf-carrier-diag
+}
+
+module "ethernet-loopback-diag" {
+  source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//ethernet-loopback-diag"
+
+  //depends_on        = [module.bandwidth-setup]
+
+  ethernet-loopback-diag = var.ethernet-loopback-diag
+}*/

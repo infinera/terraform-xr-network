@@ -1,21 +1,27 @@
+variable "lineptpid" {
+  type    = string
+  default = "1"
+}
 
-variable "hub-leaf-dscs-diag" {
-  type = map(map(object({
-    hubfacprbsgen = string
-    hubfacprbsmon = string
-  })))
+variable "carrierid" {
+  type    = string
+  default = "1"
+}
+
+variable "dscstest" {
+  type =list(object({
+    name = string
+    dscids = list(string)
+    facprbsgen = string
+    facprbsmon = string
+  }))
   description = "Defines the dsc test between Hub and each leaf"
-  default = {
-    xr-regA_H1-L1 = {
-      xr-regA_H1-Hub-BW1 = { hubfacprbsgen = "enabled", hubfacprbsmon = "enabled" }
-    },
-    xr-regA_H1-L2 = {
-      xr-regA_H1-Hub-BW2 = { hubfacprbsgen = "enabled", hubfacprbsmon = "enabled" }
-    },
-    xr-regA_H1-L3 = {
-      xr-regA_H1-Hub-BW3 = { hubfacprbsgen = "enabled", hubfacprbsmon = "enabled" }
-    }
-  }
+  default = [
+      { name="xr-regA_H1-Hub", dscids= ["1", "2", "3", "4", "5"],  facprbsgen = "true", facprbsmon = "true" },
+      { name="xr-regA_H1-L1", dscids= ["1", "2", "3", "4", "5"], facprbsgen = "true", facprbsmon = "true" },
+      { name="xr-regA_H1-L2", dscids= ["1", "2", "3", "4", "5"], facprbsgen = "true", facprbsmon = "true" },
+      { name="xr-regA_H1-L3", dscids= ["1", "2", "3", "4", "5"], facprbsgen = "true", facprbsmon = "true" },
+    ]
 }
 
 variable "hub-leaf-carrier-diag" {
