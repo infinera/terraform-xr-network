@@ -4,6 +4,6 @@
 provider "infinera.com/poc/xrcm" {
   version = "0.0.1"
   hashes = [
-    "h1:1tTrYiHK0YnXmad/HBq95ZHdd1aDIaBAr6RIcrWj8ys=",
+    "h1:ilwoee1oZEzmRYhmBKF+W2qgxFM9xVmxjjqnBs+rE00=",
   ]
 }

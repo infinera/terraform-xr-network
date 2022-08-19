@@ -125,18 +125,18 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1" 
         lctype = "uniDirDs"
-        capacity = 100
+        capacity = 4
         imc = "MatchAll"
         imc_outer_vid = ""
-        emc = ""
+        emc = "None"
         emc_outer_vid = ""        
         }, 
       lc-xr-regA_H1-L1-1-us = { // hub rcv <- leaf 1, 25G US
         clientid = "1"
         dscgid   = "3" // US DSCG ID      
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "100"        
@@ -145,8 +145,8 @@ variable "client-2-dscg" {
         clientid = "1"
         dscgid   = "4" //DS DSCG ID                 
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "200"        
@@ -155,8 +155,8 @@ variable "client-2-dscg" {
         clientid = "1"
         dscgid   = "6" //DS DSCG ID               
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "300"        
@@ -165,8 +165,8 @@ variable "client-2-dscg" {
         clientid = "1"
         dscgid   = "8" //DS DSCG ID               
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "400"        
@@ -175,18 +175,18 @@ variable "client-2-dscg" {
         clientid = "2"        
         dscgid   = "2"       
         lctype = "uniDirDs"
-        capacity = 100
+        capacity = 4
         imc = "MatchAll"
         imc_outer_vid = ""
-        emc = ""
+        emc = "None"
         emc_outer_vid = ""        
         }, 
       lc-xr-regA_H2-L1-1-us = { // hub rcv <- leaf 5, 25G US
         clientid = "2"
         dscgid   = "10" // US DSCG ID       
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "500"        
@@ -195,8 +195,8 @@ variable "client-2-dscg" {
         clientid = "2"
         dscgid   = "12" //DS DSCG ID             
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "600"        
@@ -205,8 +205,8 @@ variable "client-2-dscg" {
         clientid = "2"
         dscgid   = "14" //DS DSCG ID              
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "700"        
@@ -215,8 +215,8 @@ variable "client-2-dscg" {
         clientid = "2"
         dscgid   = "16" //DS DSCG ID                
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "800"        
@@ -227,8 +227,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"     
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "100" 
@@ -237,10 +237,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"      
         lctype = "uniDirUs"
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "100"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     },
@@ -249,8 +249,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"    
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "200" 
@@ -259,10 +259,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"    
         lctype = "uniDirUs"
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "200"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     },
@@ -271,8 +271,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"     
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "300" 
@@ -281,10 +281,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"
         lctype = "uniDirUs"      
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "300"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     },  
@@ -293,8 +293,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "400" 
@@ -303,10 +303,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"        
         lctype = "uniDirUs"
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "400"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     },
@@ -315,8 +315,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "500" 
@@ -325,10 +325,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"
         lctype = "uniDirUs"
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "500"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     },      
@@ -337,8 +337,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "600" 
@@ -347,10 +347,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"        
         lctype = "uniDirUs"
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "600"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     }, 
@@ -359,8 +359,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "700" 
@@ -369,10 +369,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"       
         lctype = "uniDirUs"
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "700"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     }, 
@@ -381,8 +381,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "800" 
@@ -391,10 +391,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"     
         lctype = "uniDirUs"
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "800"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     } 
@@ -403,18 +403,18 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1" 
         lctype = "uniDirDs"
-        capacity = 100
+        capacity = 4
         imc = "MatchAll"
         imc_outer_vid = ""
-        emc = ""
+        emc = "None"
         emc_outer_vid = ""        
         }, 
       lc-xr-regA_H1-L1-1-us = { // hub rcv <- leaf 1, 25G US
         clientid = "1"
         dscgid   = "3" // US DSCG ID      
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "100"        
@@ -423,8 +423,8 @@ variable "client-2-dscg" {
         clientid = "1"
         dscgid   = "4" //DS DSCG ID                 
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "200"        
@@ -433,8 +433,8 @@ variable "client-2-dscg" {
         clientid = "1"
         dscgid   = "6" //DS DSCG ID               
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "300"        
@@ -443,8 +443,8 @@ variable "client-2-dscg" {
         clientid = "1"
         dscgid   = "8" //DS DSCG ID               
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "400"        
@@ -453,18 +453,18 @@ variable "client-2-dscg" {
         clientid = "2"        
         dscgid   = "2"       
         lctype = "uniDirDs"
-        capacity = 100
+        capacity = 4
         imc = "MatchAll"
         imc_outer_vid = ""
-        emc = ""
+        emc = "None"
         emc_outer_vid = ""        
         }, 
       lc-xr-regA_H2-L1-1-us = { // hub rcv <- leaf 5, 25G US
         clientid = "2"
         dscgid   = "10" // US DSCG ID       
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "500"        
@@ -473,8 +473,8 @@ variable "client-2-dscg" {
         clientid = "2"
         dscgid   = "12" //DS DSCG ID             
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "600"        
@@ -483,8 +483,8 @@ variable "client-2-dscg" {
         clientid = "2"
         dscgid   = "14" //DS DSCG ID              
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "700"        
@@ -493,8 +493,8 @@ variable "client-2-dscg" {
         clientid = "2"
         dscgid   = "16" //DS DSCG ID                
         lctype = "uniDirUs"
-        capacity = 25
-        imc = ""
+        capacity = 1
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "800"        
@@ -505,8 +505,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"     
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "100" 
@@ -515,10 +515,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"      
         lctype = "uniDirUs"
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "100"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     },
@@ -527,8 +527,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"    
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "200" 
@@ -537,10 +537,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"    
         lctype = "uniDirUs"
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "200"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     },
@@ -549,8 +549,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"     
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "300" 
@@ -559,10 +559,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"
         lctype = "uniDirUs"      
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "300"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     },  
@@ -571,8 +571,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "400" 
@@ -581,10 +581,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"        
         lctype = "uniDirUs"
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "400"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     },
@@ -593,8 +593,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "500" 
@@ -603,10 +603,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"
         lctype = "uniDirUs"
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "500"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     },      
@@ -615,8 +615,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "600" 
@@ -625,10 +625,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"        
         lctype = "uniDirUs"
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "600"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     }, 
@@ -637,8 +637,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "700" 
@@ -647,10 +647,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"       
         lctype = "uniDirUs"
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "700"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     }, 
@@ -659,8 +659,8 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "1"       
         lctype = "uniDirDs"
-        capacity = 100
-        imc = ""
+        capacity = 4
+        imc = "None"
         imc_outer_vid = ""
         emc = "MatchOuterVID"
         emc_outer_vid = "800" 
@@ -669,10 +669,10 @@ variable "client-2-dscg" {
         clientid = "1"        
         dscgid   = "2"     
         lctype = "uniDirUs"
-        capacity = 25
+        capacity = 1
         imc = "MatchOuterVID"
         imc_outer_vid = "800"
-        emc = ""
+        emc = "None"
         emc_outer_vid = "" 
       }      
     } 

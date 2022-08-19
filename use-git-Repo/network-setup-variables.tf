@@ -1,7 +1,7 @@
 
 variable "trafficmode" {
   type    = string
-  default = "L1Mode"
+  default = "L2Mode"
 }
 
 variable "user" {
