@@ -30,9 +30,11 @@ module "service-setup" {
   trafficmode = var.trafficmode
 }
 
+
 /*
 module "dscs-diag" {
-  source = "./dscs-diag2"
+  source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//dscs-diag"
+
   lineptpid = 1
   carrierid = 1
   dscstest = var.dscstest
