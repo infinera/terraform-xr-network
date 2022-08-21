@@ -1,3 +1,5 @@
+trafficmode = "L1Mode"
+
 hub_names = ["XR-SFO_4-Hub"]
 leaf_names = [
   "XR-SFO_4-1",
