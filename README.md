@@ -1,6 +1,6 @@
 # Introduction
 
-This is the TF scripts to set up the XR Network using the following XR TF modules
+These are the TF scripts to set up the L1 or L2 XR Network. They shall use the following XR TF modules
 * [Bandwidth Setup](https://github.com/infinera/terraform-infinera-xr-modules/tree/main/bandwidth-setup)
 * [Network Setup](https://github.com/infinera/terraform-infinera-xr-modules/tree/main/network-setup)
 * [Service Setup](https://github.com/infinera/terraform-infinera-xr-modules/tree/main/service-setup)
@@ -13,7 +13,7 @@ Please refer to the above module links for their fucntional details
 There are two way to run the Set up FT Scripts: [Use Git Repo](https://github.com/infinera/terraform-xr-network-setup/tree/main/use-git-Repo) or [Use Terraform Registry](https://github.com/infinera/terraform-xr-network-setup/tree/main/use-terraform-registry). Presently only 'Use Git Repo" is supported.
 
 # How to Run 
-To create a network the follow steps are required
+To create a L1 or L2 XR Network, please follow these steps below:
 
 1. Clone [Use Git Repo](https://github.com/infinera/terraform-xr-network-setup/tree/main/use-git-Repo)
    
