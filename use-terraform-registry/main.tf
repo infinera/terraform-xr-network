@@ -42,7 +42,7 @@ module "service-setup" {
 
 /*
 module "dscs-diag" {
-  source = "infinera/xr-modules/infinera//dscs-diag"
+  source = "infinera/xr-modules/infinera//diagnostic/dscs-diag"
   version = "0.0.5"
 
   lineptpid = 1
@@ -51,7 +51,7 @@ module "dscs-diag" {
 }
 
 /*module "carrier-diag" {
-  source = "infinera/xr-modules/infinera//carrier-diag"
+  source = "infinera/xr-modules/infinera//diagnostic/carrier-diag"
   version = "0.0.5"
 
  // depends_on        = [module.bandwidth-setup]
@@ -61,7 +61,7 @@ module "dscs-diag" {
 }
 
 module "ethernet-loopback-diag" {
-  source = "infinera/xr-modules/infinera//ethernet-loopback-diag"
+  source = "infinera/xr-modules/infinera//diagnostic/ethernet-loopback-diag"
   version = "0.0.5"
 
   //depends_on        = [module.bandwidth-setup]

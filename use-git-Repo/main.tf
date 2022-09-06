@@ -33,7 +33,7 @@ module "service-setup" {
 
 /*
 module "dscs-diag" {
-  source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//dscs-diag"
+  source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//diagnostic/dscs-diag"
 
   lineptpid = 1
   carrierid = 1
@@ -41,7 +41,7 @@ module "dscs-diag" {
 }
 
 /*module "carrier-diag" {
-  source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//carrier-diag"
+  source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//diagnostic/carrier-diag"
 
  // depends_on        = [module.bandwidth-setup]
   
@@ -50,7 +50,7 @@ module "dscs-diag" {
 }
 
 module "ethernet-loopback-diag" {
-  source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//ethernet-loopback-diag"
+  source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//diagnostic/ethernet-loopback-diag"
 
   //depends_on        = [module.bandwidth-setup]
 
