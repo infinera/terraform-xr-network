@@ -28,3 +28,5 @@ override.tf.json
 .terraformrc
 terraform.rc
 use-git-Repo/.terraform.lock.hcl
+use-git-Repo/.terraform.lock.hcl
+use-git-Repo/.terraform.lock.hcl

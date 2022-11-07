@@ -6,15 +6,15 @@ variable "trafficmode" {
 
 variable "user" {
   type    = string
-  default = ""
+  default = "dev"
 }
 
 variable "password" {
   type    = string
-  default = ""
+  default = "xrSysArch3"
 }
 
 variable "host" {
   type    = string
-  default = ""
+  default = "https://sv-kube-prd.infinera.com:443"
 }
