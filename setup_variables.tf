@@ -1,8 +1,18 @@
 
-variable "trafficmode" {
+/*variable "user" {
   type    = string
-  default = "L2Mode"
+  default = ""
 }
+
+variable "password" {
+  type    = string
+  default = ""
+}
+
+variable "host" {
+  type    = string
+  default = ""
+}*/
 
 variable "user" {
   type    = string

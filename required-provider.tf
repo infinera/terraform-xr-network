@@ -13,4 +13,3 @@ provider "xrcm" {
   password = var.password
   host     = var.host
 }
-
