@@ -16,9 +16,9 @@ variable network {
                 }))})
   description = "for each module, specify its config, it client port and line port "
   default = {
-      configs = { portspeed = ""
+      configs = { portspeed = "100G"
                   trafficmode = "L2Mode"
-                  modulation = "" 
+                  modulation = "16QAM" 
                 }
       setup = {
         xr-regA_H1-Hub = {
