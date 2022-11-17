@@ -2,9 +2,32 @@ locals {
   ipm_control = true
 }
 
-data "xrcm_check" "precondition" {
+data "xrcm_onlinedevices" "onlinehubdevices" {
+  names = [for k,v in var.network.setup: k if v.moduleconfig["configuredrole"] == "hub"]
+}
+
+data "xrcm_onlinedevices" "onlinedevices" {
+  names = ["xr-regA_H1-L2", "xr-regA_H1-L3", "xr-regA_H1-L4"]
+}
+
+// example chek for IPM control
+data "xrcm_check" "check_host_control" {
   condition = local.ipm_control
-  throw = "IPM is not the controller. Can't configure the network."
+  throw = "Host is the controller. Can't configure the network."
+}
+
+// example check for hub count
+data "xrcm_check" "check_Hub_count" {
+  depends_on        = [data.xrcm_onlinedevices.onlinehubdevices, data.xrcm_check.check_host_control]
+  condition = length(data.xrcm_onlinedevices.onlinehubdevices.devices) >= 1 
+  throw = "Must have at least 2 Hubs"
+}
+
+// example check for config role
+data "xrcm_check" "check_leaf" {
+  depends_on        = [data.xrcm_onlinedevices.onlinedevices, data.xrcm_check.check_host_control]
+  condition = length(data.xrcm_onlinedevices.onlinedevices.devices) >= 3 && data.xrcm_onlinedevices.onlinehubdevices.devices[0].configuredrole == "leaf" && data.xrcm_onlinedevices.onlinedevices.devices[1].configuredrole == "leaf" && data.xrcm_onlinedevices.onlinedevices.devices[2].configuredrole == "leaf"
+  throw = "All devices must have Hub role"
 }
 
 // Set up the Constellation Network
