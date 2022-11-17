@@ -70,15 +70,3 @@ variable network {
       }
     }
 }
-
-variable network-carriers {
-  type = map(object({
-      modulation = optional(string)
-      clientportmode = optional(string)
-      constellationfrequency = optional(number)
-    }))
-    description = "Defines the modules' carrier intents"
-    // only add the intent that want to change. Otherwise the dedault variable shall be used.
-    default = {
-    }
-}
