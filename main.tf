@@ -1,3 +1,12 @@
+locals {
+  ipm_control = true
+}
+
+data "xrcm_check" "precondition" {
+  condition = local.ipm_control
+  throw = "IPM is not the controller. Can't configure the network."
+}
+
 // Set up the Constellation Network
 module "network" {
   source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//network"
