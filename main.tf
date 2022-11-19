@@ -9,6 +9,15 @@ data "xrcm_detaildevices" "onlineleafdevices" {
 }
 
 locals {
+ devices  = fileexists("${var.DEVICES_FILE}") ? jsondecode(file("${var.DEVICES_FILE}")) : {}
+}
+
+data "xrcm_devices" "devices" {
+  names = [] 
+  state = "ONLINE"
+}
+
+locals {
   ipm_control = true
   //check rules
   check_control = local.ipm_control == true
@@ -54,8 +63,20 @@ data "xrcm_checks" "check_host_control_and_leaf" {
            ]
 }
 
+module "check-deviceids" {
+  //source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//preconditions/check-deviceids"
+  source = "../terraform-infinera-xr-modules/preconditions/check-deviceids"
+  device_names = [for k,v in var.network.setup: k ]
+  state = "ONLINE"
+  devices_file = var.DEVICES_FILE
+  save =  false
+}
+
+
 // Set up the Constellation Network
 module "network" {
+
+  depends_on = [module.check-deviceids]
   source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//network"
   //source = "../terraform-infinera-xr-modules/network"
 

@@ -13,3 +13,9 @@ variable "host" {
   default = ""
 }
 
+variable "DEVICES_FILE" {
+  type    = string
+  default = ""
+}
+
+
