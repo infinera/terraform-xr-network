@@ -9,7 +9,6 @@ module "check-host-controls" {
   network = var.network
 }
 
-
 // Set up the Constellation Network
 
 module "network" {

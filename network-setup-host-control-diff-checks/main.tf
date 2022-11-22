@@ -4,8 +4,8 @@
 // 3) IPM master vs Host master
 
 module "check-host-controls-mismatched-values" {
-  //source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//preconditions/check-host-controls-mismatched-values"
-  source = "../../terraform-infinera-xr-modules/preconditions/check-host-controls-mismatched-values"
+  source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//preconditions/check-host-controls-mismatched-values"
+  //source = "../../terraform-infinera-xr-modules/preconditions/check-host-controls-mismatched-values"
   network = var.network
 }
 
