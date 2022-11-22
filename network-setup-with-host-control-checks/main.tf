@@ -3,18 +3,17 @@
 // 2) Ethernets, DSC AIDs's check (module resource)
 // 3) IPM master vs Host master
 
-module "check-deviceids" {
-  source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//preconditions/check-deviceids"
-  //source = "../../terraform-infinera-xr-modules/preconditions/check-deviceids"
-  device_names = [for k,v in var.network.setup: k ]
-  state = "ONLINE"
-  devices_file = var.DEVICES_FILE
-  save =  false
+module "check-host-controls" {
+  source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//preconditions/check-host-controls"
+  //source = "../../terraform-infinera-xr-modules/preconditions/check-host-controls"
+  network = var.network
 }
 
+
 // Set up the Constellation Network
+
 module "network" {
-  depends_on = [module.check-deviceids]
+  depends_on = [module.check-host-controls]
   source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//network"
   //source = "../terraform-infinera-xr-modules/network"
 
@@ -22,6 +21,5 @@ module "network" {
   leaf_bandwidth = var.leaf_bandwidth
   hub_bandwidth = var.hub_bandwidth
   client-2-dscg     = var.client-2-dscg
-  //filteredhub_names = ["xr-regA_H1-Hub"]
-  //filteredleaf_names = ["xr-regA_H1-L1"]
 }
+

@@ -15,7 +15,7 @@ variable "host" {
 
 variable "DEVICES_FILE" {
   type    = string
-   default = "./tf_devices.json"
+  default = ""
 }
 
 
