@@ -24,7 +24,7 @@ variable network {
       setup = {
         xr-regA_H1-Hub = {
           moduleconfig = { configuredrole = "hub", trafficmode ="L2Mode"}
-          moduleclients = [{ clientid = "1", portspeed="100"}, { clientid = "2",portspeed="100"}]
+          moduleclients = [{ clientid = "1", portspeed="100"}, { clientid = "2",portspeed="200"}]
           modulecarriers = [{ lineptpid = "1", carrierid = "1", modulation ="16QAM"}]
         }
         xr-regA_H1-L1 = {
