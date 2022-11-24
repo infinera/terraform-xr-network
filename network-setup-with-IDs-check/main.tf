@@ -11,14 +11,6 @@ module "check-deviceids" {
   devices_file = var.DEVICES_FILE
   save =  true
 }
-
-module "show_message" {
-  //source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//utils/show_message"
-  source = "../../terraform-infinera-xr-modules/utils/show_message"
-  test = 
-  title = "Mismatched IDs for Devices"
-
-
 // Set up the Constellation Network
 module "network" {
   depends_on = [module.check-deviceids]
