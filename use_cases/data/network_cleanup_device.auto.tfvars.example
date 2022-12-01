@@ -1,0 +1,665 @@
+assert = false
+
+devices_file= "./tf_devices.json"
+
+network = {
+      configs = { portspeed = ""
+                  trafficmode = "L2Mode"
+                  modulation = "" 
+                }
+      setup = {
+        xr-regA_H1-Hub = {
+          device = { di = "76e073d6-4570-4111-4853-3bd52878dfa2", sv = "2.00"}
+          deviceconfig = { configuredrole = "hub", trafficmode ="L1Mode"}
+          deviceclients = [{ clientid = "1", portspeed="100"}, { clientid = "2",portspeed="200"}]
+          devicecarriers = [{ lineptpid = "1", carrierid = "1", modulation ="16QAM"}]
+        }
+        xr-regA_H1-L1 = {
+          device = { di = "6cdcde2b-c839-4322-6010-0659a2fe11b1", sv = "1.00"}
+          deviceconfig = { configuredrole = "leaf", trafficmode ="L1Mode"}
+          deviceclients = [{ clientid = "1", portspeed="100"}]
+          devicecarriers = [{ lineptpid = "1", carrierid = "1", modulation ="16QAM"} ]
+        }
+        xr-regA_H1-L2 = {
+          device = { di = "6cdcde2b-c839-4322-6010-0659a2fe11b1", sv = "1.00"}
+          deviceconfig = { configuredrole = "leaf", trafficmode ="L1Mode"}
+          deviceclients = [{ clientid = "1", portspeed="100"}]
+          devicecarriers = [{ lineptpid = "1", carrierid = "1", modulation ="16QAM"} ]
+        }
+        xr-regA_H1-L3 = {
+          device = { di = "6cdcde2b-c839-4322-6010-0659a2fe11b1", sv = "1.00"}
+          deviceconfig = { configuredrole = "leaf", trafficmode ="L1Mode"}
+          deviceclients = [{ clientid = "1", portspeed="100"}]
+          devicecarriers = [{ lineptpid = "1", carrierid = "1", modulation ="16QAM"} ]
+        }
+        xr-regA_H1-L4 = {
+          device = { di = "6cdcde2b-c839-4322-6010-0659a2fe11b1", sv = "1.00"}
+          deviceconfig = { configuredrole = "leaf", trafficmode ="L1Mode"}
+          deviceclients = [{ clientid = "1", portspeed="100"}]
+          devicecarriers = [{ lineptpid = "1", carrierid = "1", modulation ="16QAM"} ]
+        }
+        xr-regA_H2-L1 = {
+          device = { di = "6cdcde2b-c839-4322-6010-0659a2fe11b1", sv = "1.00"}
+          deviceconfig = { configuredrole = "leaf", trafficmode ="L1Mode"}
+          deviceclients = [{ clientid = "1", portspeed="100"}]
+          devicecarriers = [{ lineptpid = "1", carrierid = "1", modulation ="16QAM"} ]
+        }
+        xr-regA_H2-L2 = {
+          device = { di = "6cdcde2b-c839-4322-6010-0659a2fe11b1", sv = "1.00"}
+          deviceconfig = { configuredrole = "leaf", trafficmode ="L1Mode"}
+          deviceclients = [{ clientid = "1", portspeed="100"}]
+          devicecarriers = [{ lineptpid = "1", carrierid = "1", modulation ="16QAM"} ]
+        }
+        xr-regA_H2-L3 = {
+          device = { di = "6cdcde2b-c839-4322-6010-0659a2fe11b1", sv = "1.00"}
+          deviceconfig = { configuredrole = "leaf", trafficmode ="L1Mode"}
+          deviceclients = [{ clientid = "1", portspeed="100"}]
+          devicecarriers = [{ lineptpid = "1", carrierid = "1", modulation ="16QAM"} ]
+        }
+        xr-regA_H2-L4 = {
+          device = { di = "6cdcde2b-c839-4322-6010-0659a2fe11b1", sv = "1.00"}
+          deviceconfig = { configuredrole = "leaf", trafficmode ="L1Mode"}
+          deviceclients = [{ clientid = "1", portspeed="100"}]
+          devicecarriers = [{ lineptpid = "1", carrierid = "1", modulation ="16QAM"} ]
+        }
+      }
+    }
+
+hub_bandwidth = {
+    xr-regA_H1-Hub = { // For each DSCG create a entry, ds = hubdscidlist, us = leafdscidlist. 
+      // for each dsc specified in hubdscidlist THD tx, rx enabled
+      xr-regA_H1-Hub-BW5173ds = { hubdscgid = "1", leafdscgid = "1", hubdscidlist = ["5", "1", "7", "3"], leafdscidlist = ["1", "2", "3", "4"], direction = "ds" }
+      xr-regA_H1-Hub-BW2468ds = { hubdscgid = "2", leafdscgid = "1", hubdscidlist = ["2", "4", "6", "8"], leafdscidlist = ["1", "2", "3", "4"], direction = "ds" },
+    },
+  }
+
+leaf_bandwidth = {
+    xr-regA_H1-L1 = {       
+      xr-regA_H1-Hub-BW5173ds = { hubdscgid = "3", leafdscgid = "2", hubdscidlist = ["5"], leafdscidlist = ["1"], direction = "us" }
+    }
+    xr-regA_H1-L2 = {
+       xr-regA_H1-Hub-BW5173ds = { hubdscgid = "4", leafdscgid = "2", hubdscidlist = ["1"], leafdscidlist = ["1"], direction = "us" }
+    }
+    xr-regA_H1-L3 = {
+       xr-regA_H1-Hub-BW5173ds = { hubdscgid = "6", leafdscgid = "2", hubdscidlist = ["7"], leafdscidlist = ["1"], direction = "us" }
+    }
+    xr-regA_H1-L4 = {
+      xr-regA_H1-Hub-BW5173ds = { hubdscgid = "8", leafdscgid = "2", hubdscidlist = ["3"], leafdscidlist = ["1"], direction = "us" }
+    }
+
+    xr-regA_H2-L1 = {
+       xr-regA_H1-Hub-BW2468ds = { hubdscgid = "10", leafdscgid = "2", hubdscidlist = ["2"], leafdscidlist = ["1"], direction = "us" }
+    }
+    xr-regA_H2-L2 = {
+      xr-regA_H1-Hub-BW2468ds = { hubdscgid = "12", leafdscgid = "2", hubdscidlist = ["4"], leafdscidlist = ["1"], direction = "us" }
+    }
+    xr-regA_H2-L3 = {
+      xr-regA_H1-Hub-BW2468ds = { hubdscgid = "14", leafdscgid = "2", hubdscidlist = ["6"], leafdscidlist = ["1"], direction = "us" }
+    }
+    xr-regA_H2-L4 = {
+      xr-regA_H1-Hub-BW2468ds = { hubdscgid = "16", leafdscgid = "2", hubdscidlist = ["8"], leafdscidlist = ["1"], direction = "us" }
+
+    }
+  }
+
+
+
+client-2-dscg = {
+      xr-regA_H1-Hub = {
+      lc-XR-SFO_12-1234-1-ds = { // hub tx -> leaf 1/2/3/4 - 100G Shared downstream
+        clientindex = 0        
+        dscgid   = "1" 
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "MatchAll"
+        imc_outer_vid = ""
+        emc = "None"
+        emc_outer_vid = ""        
+        }, 
+      lc-xr-regA_H1-L1-1-us = { // hub rcv <- leaf 1, 25G US
+        clientindex = 0
+        dscgid   = "3" // US DSCG ID      
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "100"        
+        },
+      lc-xr-regA_H1-L2-1-us = { // hub rcv -> leaf 2, 25G US
+        clientindex = 0
+        dscgid   = "4" //DS DSCG ID                 
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "200"        
+        },
+      lc-xr-regA_H1-L3-1-us = { // hub rcv -> leaf 3, 25G US
+        clientindex = 0
+        dscgid   = "6" //DS DSCG ID               
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "300"        
+        },
+      lc-xr-regA_H1-L4-1-us = { // hub rcv -> leaf 4, 25G US
+        clientindex = 0
+        dscgid   = "8" //DS DSCG ID               
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "400"        
+        },
+      lc-XR-SFO_12-5678-1-ds = { // hub tx -> leaf 5/6/7/8 - 100G Shared downstream
+        clientindex = 1        
+        dscgid   = "2"       
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "MatchAll"
+        imc_outer_vid = ""
+        emc = "None"
+        emc_outer_vid = ""        
+        }, 
+      lc-xr-regA_H2-L1-1-us = { // hub rcv <- leaf 5, 25G US
+        clientindex = 1
+        dscgid   = "10" // US DSCG ID       
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "500"        
+        },
+      lc-xr-regA_H2-L2-1-us = { // hub rcv -> leaf 6, 25G US
+        clientindex = 1
+        dscgid   = "12" //DS DSCG ID             
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "600"        
+        },
+      lc-xr-regA_H2-L3-1-us = { // hub rcv -> leaf 7, 25G US
+        clientindex = 1
+        dscgid   = "14" //DS DSCG ID              
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "700"        
+        },
+      lc-xr-regA_H2-L4-1-us = { // hub rcv -> leaf 8, 25G US   
+        clientindex = 1
+        dscgid   = "16" //DS DSCG ID                
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "800"        
+        },       
+    }, // end Hub AC/LCs
+    xr-regA_H1-L1 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 1 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"     
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "100" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 1 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"      
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "100"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    },
+    xr-regA_H1-L2 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 2 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"    
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "200" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 2 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"    
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "200"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    },
+    xr-regA_H1-L3 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 3 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"     
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "300" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 3 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"
+        lctype = "uniDirUs"      
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "300"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    },  
+    xr-regA_H1-L4 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 4 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"       
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "400" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 4 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"        
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "400"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    },
+    xr-regA_H2-L1 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 5 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"       
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "500" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 5 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "500"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    },      
+    xr-regA_H2-L2 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 6 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"       
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "600" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 6 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"        
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "600"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    }, 
+    xr-regA_H2-L3 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 7 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"       
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "700" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 7 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"       
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "700"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    }, 
+    xr-regA_H2-L4 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 8 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"       
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "800" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 8 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"     
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "800"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    } 
+    xr-regA_H1-Hub = {
+      lc-XR-SFO_12-1234-1-ds = { // hub tx -> leaf 1/2/3/4 - 100G Shared downstream
+        clientindex = 0        
+        dscgid   = "1" 
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "MatchAll"
+        imc_outer_vid = ""
+        emc = "None"
+        emc_outer_vid = ""        
+        }, 
+      lc-xr-regA_H1-L1-1-us = { // hub rcv <- leaf 1, 25G US
+        clientindex = 0
+        dscgid   = "3" // US DSCG ID      
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "100"        
+        },
+      lc-xr-regA_H1-L2-1-us = { // hub rcv -> leaf 2, 25G US
+        clientindex = 0
+        dscgid   = "4" //DS DSCG ID                 
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "200"        
+        },
+      lc-xr-regA_H1-L3-1-us = { // hub rcv -> leaf 3, 25G US
+        clientindex = 0
+        dscgid   = "6" //DS DSCG ID               
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "300"        
+        },
+      lc-xr-regA_H1-L4-1-us = { // hub rcv -> leaf 4, 25G US
+        clientindex = 0
+        dscgid   = "8" //DS DSCG ID               
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "400"        
+        },
+      lc-XR-SFO_12-5678-1-ds = { // hub tx -> leaf 5/6/7/8 - 100G Shared downstream
+        clientindex = 1        
+        dscgid   = "2"       
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "MatchAll"
+        imc_outer_vid = ""
+        emc = "None"
+        emc_outer_vid = ""        
+        }, 
+      lc-xr-regA_H2-L1-1-us = { // hub rcv <- leaf 5, 25G US
+        clientindex = 1
+        dscgid   = "10" // US DSCG ID       
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "500"        
+        },
+      lc-xr-regA_H2-L2-1-us = { // hub rcv -> leaf 6, 25G US
+        clientindex = 1
+        dscgid   = "12" //DS DSCG ID             
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "600"        
+        },
+      lc-xr-regA_H2-L3-1-us = { // hub rcv -> leaf 7, 25G US
+        clientindex = 1
+        dscgid   = "14" //DS DSCG ID              
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "700"        
+        },
+      lc-xr-regA_H2-L4-1-us = { // hub rcv -> leaf 8, 25G US   
+        clientindex = 1
+        dscgid   = "16" //DS DSCG ID                
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "800"        
+        },       
+    }, // end Hub AC/LCs
+    xr-regA_H1-L1 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 1 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"     
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "100" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 1 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"      
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "100"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    },
+    xr-regA_H1-L2 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 2 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"    
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "200" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 2 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"    
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "200"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    },
+    xr-regA_H1-L3 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 3 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"     
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "300" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 3 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"
+        lctype = "uniDirUs"      
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "300"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    },  
+    xr-regA_H1-L4 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 4 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"       
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "400" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 4 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"        
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "400"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    },
+    xr-regA_H2-L1 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 5 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"       
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "500" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 5 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "500"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    },      
+    xr-regA_H2-L2 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 6 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"       
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "600" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 6 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"        
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "600"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    }, 
+    xr-regA_H2-L3 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 7 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"       
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "700" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 7 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"       
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "700"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    }, 
+    xr-regA_H2-L4 = {
+      lc-xr-regA_H1-Hub-ds-1 = { // leaf 8 rcv <- hub, 100G shared DS 
+        clientindex = 0        
+        dscgid   = "1"       
+        lctype = "uniDirDs"
+        capacity = 4
+        imc = "None"
+        imc_outer_vid = ""
+        emc = "MatchOuterVID"
+        emc_outer_vid = "800" 
+      },
+      lc-xr-regA_H1-Hub-us-1 = { // leaf 8 tx -> hub, 25G shared DS 
+        clientindex = 0        
+        dscgid   = "2"     
+        lctype = "uniDirUs"
+        capacity = 1
+        imc = "MatchOuterVID"
+        imc_outer_vid = "800"
+        emc = "None"
+        emc_outer_vid = "" 
+      }      
+    } 
+  }
+
