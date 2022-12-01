@@ -5,11 +5,6 @@ variable assert {
   default = false
 }
 
-variable "devices_file" {
-  type    = string
-   default = "./tf_devices.json"
-}
-
 variable "cleanup_device_names" {
   type    = list(string)
    default = []
