@@ -1,3 +1,10 @@
+terraform {
+  required_providers {
+    xrcm = {
+      source = "infinera.com/poc/xrcm"
+    }
+  }
+}
 
 provider "xrcm" {
   username = "dev"

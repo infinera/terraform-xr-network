@@ -27,7 +27,7 @@ variable network {
         xr-regA_H1-Hub = {
           device = { di = "76e073d6-4570-4111-4853-3bd52878dfa2", sv = "1.00"}
           deviceconfig = { configuredrole = "hub", trafficmode ="L1Mode"}
-          deviceclients = [{ clientid = "1", portspeed="100"}, { clientid = "2",portspeed="200"}]
+          deviceclients = [{ clientid = "1", portspeed="100"}, { clientid = "2",portspeed="400"}]
           devicecarriers = [{ lineptpid = "1", carrierid = "1", modulation ="16QAM"}]
         }
         xr-regA_H1-L1 = {

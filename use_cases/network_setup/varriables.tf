@@ -5,4 +5,9 @@ variable asserts {
   default = ["Version", "HostAttributeMismatched"]
 }
 
+variable confition {
+  type = string
+  default = "HostAttributeMismatched"
+}
+
 
