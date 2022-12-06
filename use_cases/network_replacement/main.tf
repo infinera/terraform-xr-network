@@ -4,7 +4,6 @@ module "network_device_replacement" {
   //source = "../../../terraform-infinera-xr-modules/workflows/network_device_replacement"
   
   assert = var.assert
-  devices_file = var.devices_file
   network = var.network
   leaf_bandwidth = var.leaf_bandwidth
   hub_bandwidth = var.hub_bandwidth
