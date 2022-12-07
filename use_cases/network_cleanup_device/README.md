@@ -11,6 +11,20 @@ The procedure to replace one device by another device shall involve two steps
      4. The sevice intent
   3.  Execute "terraform apply" in usecase **network_cleanup_device** directory or a clone. This will delete and any related resources on the removed devices and update other related resources in teh constellation network.
 
+*main.tf* in ***network_setup*** directory
+```
+  // network module shall provision the constellation network without any checks
+  module "network" {
+    source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//tasks/network"
+    //source = "source = "../../tasks/network"
+
+    network = var.network                       // specify the intent network
+    leaf_bandwidth = var.leaf_bandwidth         // specify the intent leaf bandwidth
+    hub_bandwidth = var.hub_bandwidth           // specify the intent Hub bandwidth
+    client-2-dscg     = var.client-2-dscg       // specify the intent service (AC and/or LC)
+    filtered_devices = var.cleanup_device_names // specify the removed devices
+}
+```
 ## Description
 Below is the run sequence
 ### check for device with version mismatched

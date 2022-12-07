@@ -12,6 +12,25 @@ The procedure to replace one device by another device shall involve two steps
      1. Execute "terraform apply" in usecase ***network replacement*** directory or a clone. This will update related resources and removed and any dangling resources on the devices which have same labels but different IDs. The TF state device IDs will be used to compare against the current device IDs in the network.
      2. Execute again "terraform apply" in usecase ***network replacement*** directory or a clone. This will create new resources in the replacing devices and update related resources in the affected devices. 
 
+*main.tf* in ***network replacement*** directory
+```
+  // network_device_replacement module only checks for device ID mismatched
+  module "network_device_replacement" {
+    source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//workflows/network_device_replacement"
+    //source = "../../../terraform-infinera-xr-modules/workflows/network_device_replacement"
+    
+    assert = var.assert                    // specify the assert if device ID mismatched is found
+    network = var.network                  // specify the intent network
+    leaf_bandwidth = var.leaf_bandwidth    // specify the intent leaf bandwidth
+    hub_bandwidth = var.hub_bandwidth      // specify the intent Hub bandwidth
+    client-2-dscg     = var.client-2-dscg  // specify the intent service (AC and/or LC)
+  }
+
+  output "message" {
+    value = module.network_device_replacement.message
+  }
+```
+
 ## Description
 Below is the run sequence
 ### Set up constellation configuration

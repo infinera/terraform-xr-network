@@ -1,13 +1,36 @@
 # Terraform XR Network Set Up
 This module will setup the constellation network based on the specified configuration.
 ## How to Run
-  1. Go to the **network setup** directory or its clone directory
+  1. Go to the **network_setup** directory or its clone directory
   2. Specify the input variables by updating the *network_setup.auto.tfvars* input file. 
      1. The asserts
      2. The network intent
      3. The bandwidth intent
      4. The sevice intent
   3. Execute "terraform apply" in usecase **network setup** directory or a clone 
+
+*main.tf* in ***network_setup*** directory
+```
+  // setup_network_with_checks module shall provision the constellation network and support checks
+  module "setup_network_with_checks" {
+    //source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//workflows/setup_network_with_checks"
+    source = "../../../terraform-infinera-xr-modules/workflows/setup_network_with_checks"
+    
+    asserts = var.asserts // specify assert (stop run) if one of the asserted condition is found. PLease see asserts definition below for the supported assertions
+    network = var.network                  // specify the intent network
+    leaf_bandwidth = var.leaf_bandwidth    // specify the intent leaf bandwidth
+    hub_bandwidth = var.hub_bandwidth      // specify the intent Hub bandwidth
+    client-2-dscg     = var.client-2-dscg  // specify the intent service (AC and/or LC)
+  }
+
+  output "check_devices_version_message" {
+    value =  module.setup_network_with_checks.devices_version_check_message
+  }
+
+  output "host_attribute_mismatch_check_message" {
+    value =  module.setup_network_with_checks.host_attribute_mismatch_check_message
+  }
+```
 ## Description
 Below is the run sequence
 ### check for device with version mismatched
