@@ -1,5 +1,5 @@
-# Terraform XR Network Set Up
-This module will setup the constellation network based on the specified configuration.
+# Use Case: Terraform XR Network Set Up
+This Use Case will setup the constellation network based on the specified configuration.
 ## How to Run 
   1. Go to the **network_setup** directory or its clone directory
      1. Assumption: *terraform init* was executed before (only one time) to initialize the terraform setup.

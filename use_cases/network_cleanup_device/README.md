@@ -1,5 +1,5 @@
-# Terraform XR Network Cleanup Device
-This module shall handle the situation when one or more devices in a constellation device are removed. This will  remove all resources which parent device is nolonger a members of the constellation network.
+# Use Case: Terraform XR Network Cleanup Device
+This Use Case shall handle the situation when one or more devices in a constellation device are removed. This will  remove all resources which parent device is nolonger a members of the constellation network.
 
 ## How to
 The procedure to replace one device by another device shall involve two steps

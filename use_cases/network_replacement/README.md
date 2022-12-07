@@ -1,5 +1,5 @@
-# Terraform XR Network Replacement 
-This module shall handle the situation when one device in a constellation device is replaced by another device.
+# Use Case: Terraform XR Network Replacement 
+This Use Case shall handle the situation when one device in a constellation device is replaced by another device. This is done by comparing the TF state device IDs against the network device IDs. The TF State stores the current constellation coniguration which includes its devices and their properties such as device ID.
 
 ## How to
 The procedure to replace one device by another device shall involve two steps
