@@ -11,7 +11,7 @@ The procedure to replace one device by another device shall involve two steps
      4. The sevice intent
   3.  Execute "terraform apply" in usecase **network_cleanup_device** directory or a clone. This will delete and any related resources on the removed devices and update other related resources in teh constellation network.
 
-*main.tf* in ***network_setup*** directory
+*main.tf* in ***network_cleanup_device*** directory
 ```
   // network module shall provision the constellation network without any checks
   module "network" {
@@ -49,13 +49,6 @@ If there is a device with mismatched host attributes from the specified intent, 
    3. Provision Hub Device LC
    4. Provision Leaf Device LC
 ## Inputs
-### Asserts: If specified the run will stop when the condition is found.  
-The supported condition are HostAttribute, HostAttributeNMismatched, HostAttributeNMatched, NonHostAttribute, NonHostAttributeNMismatched, NonHostAttributeNMatched,  Matched, Mismatched
-```
-variable asserts {
-  type = list(string)
-  default = ["Version", "HostAttributeNMismatched"]
-```
 ### Network: For each device, specify its Device, Device config, its Client Ports and Line Carriers.
 ```
 variable network {
