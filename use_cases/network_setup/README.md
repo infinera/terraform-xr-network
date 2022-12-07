@@ -1,5 +1,13 @@
 # Terraform XR Network Set Up
 This module will setup the constellation network based on the specified configuration.
+## How to Run
+1. Go to the **network setup** directory or its clone directory
+2. Specify the input variables by updating the **network_setup.auto.tfvars** input file. 
+   1. The asserts
+   2. The network intent
+   3. The bandwidth intent
+   4. The sevice intent
+3. Execute "terraform apply" in usecase ***network setup*** directory or a clone 
 ## Description
 Belew are the run sequence
 ### check for device with version mismatched
@@ -41,7 +49,7 @@ If there is a device with mismatched host attributesfrom the specified intent, T
   >         devicecarriers= optional(list(object({lineptpid = string, carrierid = string, modulation = optional(string), clientportmode = optional(string),constellationfrequency = optional(number)})))
   >     }))
   >   })}
-2. Example
+1. Example
   > network = {
   >   configs = { portspeed = "", trafficmode = "L1Mode", modulation = "" }
   >   setup = {
@@ -51,7 +59,6 @@ If there is a device with mismatched host attributesfrom the specified intent, T
   >       deviceclients = [{ clientid = "1", portspeed="200"}, { clientid = "2",portspeed="200"}]
   >       devicecarriers = [{ lineptpid = "1", carrierid = "1", modulation ="16QAM"}] 
   >   }}
-
 ### Bandwidth
 #### Hub Bandwidth
 1. Definition: Defines the bandwidth to provisioned between Hub and each leaf. For each leaf, define the hub dscids to be assigned to the BW, and the hubdscgid and leafdscgid to be use to create the DSCG. Creates Hub and Leaf DSCGs
@@ -65,7 +72,7 @@ If there is a device with mismatched host attributesfrom the specified intent, T
   >   xr-regA_H1-Hub-BW2468ds = { hubdscgid = "2", leafdscgid = "1", hubdscidlist = ["2", "4", "6", "8"], leafdscidlist = ["1", "2", "3", "4"], direction = "ds" },
   >   },}
 ### Leaf bandwidth
-1. Definition: "Defines the bandwidth to provisioned between Hub and each leaf. For each leaf, define the hub dscids to be assigned to the BW, and the hubdscgid and leafdscgid to be use to create the DSCG. Creates Hub and Leaf DSCGs"
+1. Definition: Defines the bandwidth to provisioned between Hub and each leaf. For each leaf, define the hub dscids to be assigned to the BW, and the hubdscgid and leafdscgid to be use to create the DSCG. Creates Hub and Leaf DSCGs
    > variable "leaf_bandwidth" {
    >  // type        = map(map(list(string)))
    >  type = map(map(object({ hubdscgid = string, leafdscgid = string, hubdscidlist = list(string), leafdscidlist = list(string), direction = string // possible values: bidi, us, ds
@@ -74,5 +81,38 @@ If there is a device with mismatched host attributesfrom the specified intent, T
    >  leaf_bandwidth = {
   >   xr-regA_H1-L1 = {       
   >     xr-regA_H1-Hub-BW5173ds = { hubdscgid = "3", leafdscgid = "2", hubdscidlist = ["5"], leafdscidlist = ["1"], direction = "us" }}
+### Services
+1. Definition: Defines the local connections for each node in the network. each conection include the cliend id and dscg id
+   >  variable "client-2-dscg" {
+   >    type = map(map(object({ clientindex = optional(number) // index to module_clients list
+   >                            dscgid   = optional(string)
+   >                            lctype = optional(string)
+   >                            capacity = optional(number)
+   >                            imc = optional(string)
+   >                            imc_outer_vid = optional(string)
+   >                            emc = optional(string)
+   >                            emc_outer_vid = optional(string) })))
+1. Example:
+    >  client-2-dscg = {
+    >   xr-regA_H1-Hub = {
+    >     lc-XR-SFO_12-1234-1-ds = { // hub tx -> leaf 1/2/3/4 - 100G Shared downstream
+    >       clientindex = 0
+    >       dscgid   = "1" lctype = "uniDirDs"
+    >       capacity = 4
+    >       imc = "MatchAll"
+    >       imc_outer_vid = ""
+    >       emc = "None"
+    >       emc_outer_vid = ""        
+    >     }, 
+    >     lc-xr-regA_H1-L1-1-us = { // hub rcv <- leaf 1, 25G US
+    >       clientindex = 0
+    >       dscgid   = "3" // US DSCG ID 
+    >       lctype = "uniDirUs"
+    >       capacity = 1
+    >       imc = "None" 
+    >       imc_outer_vid = ""
+    >       emc = "MatchOuterVID"
+    >       emc_outer_vid = "100"       
+    >     }}
 ## Data File 
 
