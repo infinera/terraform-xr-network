@@ -33,7 +33,7 @@ This Use Case will setup the constellation network based on the specified config
   }
 ```
 ## References
-* [setup_network_with_checks task](https://github.com/infinera/terraform-infinera-xr-modules/tree/main/workflows/setup_network_with_checks)
+* [setup_network_with_checks workflow](https://github.com/infinera/terraform-infinera-xr-modules/tree/main/workflows/setup_network_with_checks)
 ## Description
 Below is the run sequence
 ### check for device with version mismatched
