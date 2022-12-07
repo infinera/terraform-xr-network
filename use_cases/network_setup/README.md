@@ -32,13 +32,14 @@ If there is a device with mismatched host attributes from the specified intent, 
    3. Provision Hub Device LC
    4. Provision Leaf Device LC
 ## Inputs
-### Asserts: If specified the run will stop when the condition is found. The supported condition are HostAttribute, HostAttributeNMismatched, HostAttributeNMatched, NonHostAttribute, NonHostAttributeNMismatched, NonHostAttributeNMatched,  Matched, Mismatched
+### Asserts: If specified the run will stop when the condition is found.  
+The supported condition are HostAttribute, HostAttributeNMismatched, HostAttributeNMatched, NonHostAttribute, NonHostAttributeNMismatched, NonHostAttributeNMatched,  Matched, Mismatched
 ```
 variable asserts {
   type = list(string)
   default = ["Version", "HostAttributeNMismatched"]
 ```
-### Network: For each device, specify its Device, Device config, it Client Ports and Line Carriers.
+### Network: For each device, specify its Device, Device config, its Client Ports and Line Carriers.
 ```
 variable network {
   type = object({
@@ -93,7 +94,7 @@ leaf_bandwidth = {
   }
 }
 ```
-### Services: Defines the local connections for each node in the network. each conection include the Cliend id and DSCG id
+### Services: Defines the local connections for each node in the network. Each conection includes the Cliend id and DSCG id
 ```
 variable "client-2-dscg" {
   type = map(map(object({ clientindex = optional(number) // index to module_clients list
