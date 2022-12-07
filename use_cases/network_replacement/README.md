@@ -3,16 +3,17 @@ This module shall handle the situation when one device in a constellation device
 
 ## How to
 The procedure to replace one device by another device shall involve two steps
-  1. Go to the **network replacement** directory or its clone directory
-  2. Specify the input variables by updating the **network_replacement.auto.tfvars** input file. 
+  1. Go to the **network_replacement** directory or its clone directory
+     1. Assumption: *terraform init* was executed before (only one time) to initialize the terraform setup.
+  2. Specify the input variables by updating the **AAA.auto.tfvars** input file. 
      1. The network intent
      2. The bandwidth intent
      3. The sevice intent
   3. Run the replacement procedure. ***This requires two execution steps***
-     1. Execute "terraform apply" in usecase ***network replacement*** directory or a clone. This will update related resources and removed and any dangling resources on the devices which have same labels but different IDs. The TF state device IDs will be used to compare against the current device IDs in the network.
-     2. Execute again "terraform apply" in usecase ***network replacement*** directory or a clone. This will create new resources in the replacing devices and update related resources in the affected devices. 
+     1. Execute *terraform apply* to run using the input from *AAA.auto.tfvars* or *terraform -apply -var-file="AAA.tfvars"*. This will update related resources and removed and any dangling resources on the devices which have same labels but different IDs. The TF state device IDs will be used to compare against the current device IDs in the network.
+     2. Execute again *terraform apply* to run using the input from *AAA.auto.tfvars* or *terraform -apply -var-file="AAA.tfvars"*. This will create new resources in the replacing devices and update related resources in the affected devices. 
 
-*main.tf* in ***network replacement*** directory
+*main.tf* in **network replacement** directory
 ```
   // network_device_replacement module only checks for device ID mismatched
   module "network_device_replacement" {

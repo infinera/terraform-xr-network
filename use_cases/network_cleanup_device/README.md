@@ -1,17 +1,18 @@
 # Terraform XR Network Cleanup Device
-This module shall handle the situation when one or more devices in a constellation device are removed.
+This module shall handle the situation when one or more devices in a constellation device are removed. This will  remove all resources which parent device is nolonger a members of the constellation network.
 
 ## How to
 The procedure to replace one device by another device shall involve two steps
   1. Go to the **network_cleanup_device** directory or its clone directory
-  2. Specify the input variables by updating the **network_cleanup_device.auto.tfvars** input file. 
+     1. Assumption: *terraform init* was executed before (only one time) to initialize the terraform setup.
+  2. Specify the input variables by updating the **AAA.auto.tfvars** input file. 
      1. The removed devices are specified in **cleanup_device_names** variable 
      2. The network intent
      3. The bandwidth intent
      4. The sevice intent
-  3.  Execute "terraform apply" in usecase **network_cleanup_device** directory or a clone. This will delete and any related resources on the removed devices and update other related resources in teh constellation network.
+  3. Execute *terraform apply* to run using the input from *AAA.auto.tfvars* or *terraform -apply -var-file="AAA.tfvars"*. This will delete and any related resources on the removed devices and update other related resources in the constellation network.
 
-*main.tf* in ***network_cleanup_device*** directory
+*main.tf* in **network_cleanup_device** directory
 ```
   // network module shall provision the constellation network without any checks
   module "network" {
@@ -27,11 +28,7 @@ The procedure to replace one device by another device shall involve two steps
 ```
 ## Description
 Below is the run sequence
-### check for device with version mismatched
-If there is a device with version mismatched from the specified intent, the run shall be stopped if "Version" is specified in the *assertions* variable.
-### check for device with mismatched Host Attribute
-If there is a device with mismatched host attributes from the specified intent, the run shall be stopped if "HostAttributeNMismatched" is specified in the *assertions* variable.
-### Set up constellation configuration
+### Set up constellation configuration with the remaining devices in the constellation. This will also remove all resources which parent device is nolonger a members of the constellation network.
 1. Configure Network
    1. Configure Hub Device Config
    2. Configure Leaf Device Config
@@ -49,6 +46,13 @@ If there is a device with mismatched host attributes from the specified intent, 
    3. Provision Hub Device LC
    4. Provision Leaf Device LC
 ## Inputs
+### Filtered Device: List of the devices removed from the constellation
+```
+variable "cleanup_device_names" {
+  type    = list(string)
+  default = []
+}
+```
 ### Network: For each device, specify its Device, Device config, its Client Ports and Line Carriers.
 ```
 variable network {

@@ -1,15 +1,16 @@
 # Terraform XR Network Set Up
 This module will setup the constellation network based on the specified configuration.
-## How to Run
+## How to Run 
   1. Go to the **network_setup** directory or its clone directory
-  2. Specify the input variables by updating the *network_setup.auto.tfvars* input file. 
+     1. Assumption: *terraform init* was executed before (only one time) to initialize the terraform setup.
+  2. Specify the input variables by updating the *AAA.auto.tfvars* input file. 
      1. The asserts
      2. The network intent
      3. The bandwidth intent
      4. The sevice intent
-  3. Execute "terraform apply" in usecase **network setup** directory or a clone 
+  3. Execute *terraform apply* to run using the input from *AAA.auto.tfvars* or *terraform -apply -var-file="AAA.tfvars"*. This will configure the constellation network with the specified asserted conditions
 
-*main.tf* in ***network_setup*** directory
+*main.tf* in **network_setup** directory
 ```
   // setup_network_with_checks module shall provision the constellation network and support checks
   module "setup_network_with_checks" {
