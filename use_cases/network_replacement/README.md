@@ -31,7 +31,8 @@ The procedure to replace one device by another device shall involve two steps
     value = module.network_device_replacement.message
   }
 ```
-
+## References
+* [network_device_replacement task](https://github.com/infinera/terraform-infinera-xr-modules/tree/main/workflows/network_device_replacement)
 ## Description
 Below is the run sequence
 ### Set up constellation configuration

@@ -32,7 +32,9 @@ This Use Case will setup the constellation network based on the specified config
     value =  module.setup_network_with_checks.host_attribute_mismatch_check_message
   }
 ```
-## Description
+## References
+* [setup_network_with_checks task](https://github.com/infinera/terraform-infinera-xr-modules/tree/main/workflows/setup_network_with_checks)
+* ## Description
 Below is the run sequence
 ### check for device with version mismatched
 If there is a device with version mismatched from the specified intent, the run shall be stopped if "Version" is specified in the *assertions* variable.

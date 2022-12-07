@@ -26,6 +26,8 @@ The procedure to replace one device by another device shall involve two steps
     filtered_devices = var.cleanup_device_names // specify the removed devices
 }
 ```
+## References
+* [network task](https://github.com/infinera/terraform-infinera-xr-modules/tree/main/tasks/network)
 ## Description
 Below is the run sequence
 ### Set up constellation configuration with the remaining devices in the constellation. This will also remove all resources which parent device is nolonger a members of the constellation network.
