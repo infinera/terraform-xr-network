@@ -39,27 +39,30 @@ variable asserts {
   default = ["HostAttributeNMismatched"]
   //Support Condition = HostAttribute, HostAttributeNMismatched, HostAttributeNMatched, NonHostAttribute, NonHostAttributeNMismatched, NonHostAttributeNMatched,  Matched, Mismatched
 ```
-### Network :
-1. Definition: for each device, specify its Device, Device config, it client ports and line Carriers "
-  > variable network {
-  >   type = object({
-  >     configs = object({ portspeed = optional(string), trafficmode = optional(string), modulation = optional(string) })
-  >     setup = map(object({ device  = optional(object( {di = optional(string), sv = optional(string)})),
-  >         deviceconfig  = optional(object( {fiberconnectionmode = optional(string), tcmode = optional(bool), configuredrole = optional(string), trafficmode = optional(string)})),
-  >         deviceclients = optional(list(object({clientid = string, portspeed = optional(string)}))),
-  >         devicecarriers= optional(list(object({lineptpid = string, carrierid = string, modulation = optional(string), clientportmode = optional(string),constellationfrequency = optional(number)})))
-  >     }))
-  >   })}
-1. Example
-  > network = {
-  >   configs = { portspeed = "", trafficmode = "L1Mode", modulation = "" }
-  >   setup = {
-  >   xr-regA_H1-Hub = {
-  >     device = { di = "76e073d6-4570-4111-4853-3bd52878dfa2", sv = "1.00"}
-  >       deviceconfig = { configuredrole = "hub", trafficmode ="L1Mode"}
-  >       deviceclients = [{ clientid = "1", portspeed="200"}, { clientid = "2",portspeed="200"}]
-  >       devicecarriers = [{ lineptpid = "1", carrierid = "1", modulation ="16QAM"}] 
-  >   }}
+### Network : For each device, specify its Device, Device config, it client ports and line Carriers.
+```
+variable network {
+  type = object({
+    configs = object({ portspeed = optional(string), trafficmode = optional(string), modulation = optional(string) })
+    setup = map(object({ device  = optional(object( {di = optional(string), sv = optional(string)})),
+    deviceconfig  = optional(object( {fiberconnectionmode = optional(string), tcmode = optional(bool), configuredrole = optional(string), trafficmode = optional(string)})),
+    deviceclients = optional(list(object({clientid = string, portspeed = optional(string)}))),
+    devicecarriers= optional(list(object({lineptpid = string, carrierid = string, modulation = optional(string), clientportmode = optional(string),constellationfrequency = optional(number)})))
+    }))
+  })}
+
+Example:
+network = {
+  configs = { portspeed = "", trafficmode = "L1Mode", modulation = "" }
+  setup = {
+    xr-regA_H1-Hub = {
+      device = { di = "76e073d6-4570-4111-4853-3bd52878dfa2", sv = "1.00"}
+      deviceconfig = { configuredrole = "hub", trafficmode ="L1Mode"}
+      deviceclients = [{ clientid = "1", portspeed="200"}, { clientid = "2",portspeed="200"}]
+      devicecarriers = [{ lineptpid = "1", carrierid = "1", modulation ="16QAM"}] 
+    }
+  }
+```
 ### Bandwidth
 #### Hub Bandwidth
 1. Definition: Defines the bandwidth to provisioned between Hub and each leaf. For each leaf, define the hub dscids to be assigned to the BW, and the hubdscgid and leafdscgid to be use to create the DSCG. Creates Hub and Leaf DSCGs
