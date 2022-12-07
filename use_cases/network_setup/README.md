@@ -3,10 +3,10 @@ This module will setup the constellation network based on the specified configur
 ## How to Run
   1. Go to the **network setup** directory or its clone directory
   2. Specify the input variables by updating the **network_setup.auto.tfvars** input file. 
-    1. The asserts
-    2. The network intent
-    3. The bandwidth intent
-    4. The sevice intent
+     1. The asserts
+     2. The network intent
+     3. The bandwidth intent
+     4. The sevice intent
   3. Execute "terraform apply" in usecase ***network setup*** directory or a clone 
 ## Description
 Below is the run sequence
