@@ -2,12 +2,8 @@
 // Otherwise continue to run.
 variable asserts {
   type = list(string)
-  default = ["Version", "HostAttributeMismatched"]
-}
-
-variable confition {
-  type = string
-  default = "HostAttributeMismatched"
+  default = ["HostAttributeNMismatched"]
+  #  Support Values = HostAttribute, HostAttributeNMismatched, HostAttributeNMatched, NonHostAttribute, NonHostAttributeNMismatched, NonHostAttributeNMatched,  Matched, Mismatched
 }
 
 
