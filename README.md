@@ -1,6 +1,6 @@
 # XR Constellation Use Cases:
 
-## [Network Setup](https://github.com/infinera/terraform-xr-network/tree/main/use_cases/network_setuphttps://github.com/infinera/terraform-xr-network/tree/main/use_cases/network_replacement)
+## [Network Setup](https://github.com/infinera/terraform-xr-network/tree/main/use_cases/network_setup)
 Create a constellation network with the following checks
   1. Device version check
   2. Host mismatched attribute check
