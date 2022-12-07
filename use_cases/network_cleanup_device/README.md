@@ -5,11 +5,11 @@ This module shall handle the situation when one or more devices in a constellati
 The procedure to replace one device by another device shall involve two steps
   1. Go to the **network_cleanup_device** directory or its clone directory
   2. Specify the input variables by updating the **network_cleanup_device.auto.tfvars** input file. 
-    1. The removed devices are specified in **cleanup_device_names** variable 
-    2. The network intent
-    3. The bandwidth intent
-    4. The sevice intent
-    5. Execute "terraform apply" in usecase **network_cleanup_device** directory or a clone. This will delete and any related resources on the removed devices and update other related resources in teh constellation network.
+     1. The removed devices are specified in **cleanup_device_names** variable 
+     2. The network intent
+     3. The bandwidth intent
+     4. The sevice intent
+  3.  Execute "terraform apply" in usecase **network_cleanup_device** directory or a clone. This will delete and any related resources on the removed devices and update other related resources in teh constellation network.
 
 ## Description
 Below is the run sequence
@@ -77,13 +77,12 @@ Below is the run sequence
 ### Leaf bandwidth
 1. Definition: Defines the bandwidth to provisioned between Hub and each leaf. For each leaf, define the hub dscids to be assigned to the BW, and the hubdscgid and leafdscgid to be use to create the DSCG. Creates Hub and Leaf DSCGs
    > variable "leaf_bandwidth" {
-   >  // type        = map(map(list(string)))
    >  type = map(map(object({ hubdscgid = string, leafdscgid = string, hubdscidlist = list(string), leafdscidlist = list(string), direction = string // possible values: bidi, us, ds
   })))
 1. Example
    >  leaf_bandwidth = {
-  >   xr-regA_H1-L1 = {       
-  >     xr-regA_H1-Hub-BW5173ds = { hubdscgid = "3", leafdscgid = "2", hubdscidlist = ["5"], leafdscidlist = ["1"], direction = "us" }}
+   >   xr-regA_H1-L1 = {       
+   >     xr-regA_H1-Hub-BW5173ds = { hubdscgid = "3", leafdscgid = "2", hubdscidlist = ["5"], leafdscidlist = ["1"], direction = "us" }}
 ### Services
 1. Definition: Defines the local connections for each node in the network. each conection include the cliend id and dscg id
    >  variable "client-2-dscg" {

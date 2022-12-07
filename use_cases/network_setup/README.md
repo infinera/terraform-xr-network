@@ -74,13 +74,12 @@ If there is a device with mismatched host attributesfrom the specified intent, T
 ### Leaf bandwidth
 1. Definition: Defines the bandwidth to provisioned between Hub and each leaf. For each leaf, define the hub dscids to be assigned to the BW, and the hubdscgid and leafdscgid to be use to create the DSCG. Creates Hub and Leaf DSCGs
    > variable "leaf_bandwidth" {
-   >  // type        = map(map(list(string)))
    >  type = map(map(object({ hubdscgid = string, leafdscgid = string, hubdscidlist = list(string), leafdscidlist = list(string), direction = string // possible values: bidi, us, ds
   })))
 1. Example
    >  leaf_bandwidth = {
-  >   xr-regA_H1-L1 = {       
-  >     xr-regA_H1-Hub-BW5173ds = { hubdscgid = "3", leafdscgid = "2", hubdscidlist = ["5"], leafdscidlist = ["1"], direction = "us" }}
+   >   xr-regA_H1-L1 = {       
+   >     xr-regA_H1-Hub-BW5173ds = { hubdscgid = "3", leafdscgid = "2", hubdscidlist = ["5"], leafdscidlist = ["1"], direction = "us" }}
 ### Services
 1. Definition: Defines the local connections for each node in the network. each conection include the cliend id and dscg id
    >  variable "client-2-dscg" {
