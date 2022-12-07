@@ -32,12 +32,8 @@ Below is the run sequence
    3. Provision Hub Device LC
    4. Provision Leaf Device LC
 ## inputs
-### Asserts : If specified the run will stop when the condition is found
-> variable asserts {
->   type = list(string)
->   default = ["HostAttributeNMismatched"]
->   // Support Values = HostAttribute, HostAttributeNMismatched, HostAttributeNMatched, NonHostAttribute, NonHostAttributeNMismatched, NonHostAttributeNMatched,  Matched, Mismatched
->
+### Asserts : If assert is true, the run will stop when there is a device which its network ID is different from the TF State ID
+> variable assert { type = bool, default = true }
 ### Network :
 1. Definition: for each device, specify its Device, Device config, it client ports and line Carriers "
   > variable network {

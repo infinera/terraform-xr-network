@@ -33,11 +33,12 @@ If there is a device with mismatched host attributesfrom the specified intent, T
    4. Provision Leaf Device LC
 ## Inputs
 ### Asserts : If specified the run will stop when the condition is found
-> variable asserts{
->   type = list(string)
->   default = ["HostAttributeNMismatched"]
->   Support Condition = HostAttribute, HostAttributeNMismatched, HostAttributeNMatched, NonHostAttribute, NonHostAttributeNMismatched, NonHostAttributeNMatched,  Matched, Mismatched
->
+```
+variable asserts {
+  type = list(string)
+  default = ["HostAttributeNMismatched"]
+  //Support Condition = HostAttribute, HostAttributeNMismatched, HostAttributeNMatched, NonHostAttribute, NonHostAttributeNMismatched, NonHostAttributeNMatched,  Matched, Mismatched
+```
 ### Network :
 1. Definition: for each device, specify its Device, Device config, it client ports and line Carriers "
   > variable network {
