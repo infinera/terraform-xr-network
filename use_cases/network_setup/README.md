@@ -2,18 +2,18 @@
 This module will setup the constellation network based on the specified configuration.
 ## How to Run
   1. Go to the **network setup** directory or its clone directory
-  2. Specify the input variables by updating the **network_setup.auto.tfvars** input file. 
+  2. Specify the input variables by updating the *network_setup.auto.tfvars* input file. 
      1. The asserts
      2. The network intent
      3. The bandwidth intent
      4. The sevice intent
-  3. Execute "terraform apply" in usecase ***network setup*** directory or a clone 
+  3. Execute "terraform apply" in usecase **network setup** directory or a clone 
 ## Description
 Below is the run sequence
 ### check for device with version mismatched
-If there is a device with version mismatched from the specified intent, the user can stop the run by specifying "Version" assertion
+If there is a device with version mismatched from the specified intent, the run shall be stopped if "Version" is specified in the *assertions* variable.
 ### check for device with mismatched Host Attribute
-If there is a device with mismatched host attributesfrom the specified intent, The user can stop the run by specifying "HostAttributeNMismatched" assertion
+If there is a device with mismatched host attributes from the specified intent, the run shall be stopped if "HostAttributeNMismatched" is specified in the *assertions* variable.
 ### Set up constellation configuration
 1. Configure Network
    1. Configure Hub Device Config
@@ -32,14 +32,13 @@ If there is a device with mismatched host attributesfrom the specified intent, T
    3. Provision Hub Device LC
    4. Provision Leaf Device LC
 ## Inputs
-### Asserts Variable: If specified the run will stop when the condition is found
+### Asserts: If specified the run will stop when the condition is found. The supported condition are HostAttribute, HostAttributeNMismatched, HostAttributeNMatched, NonHostAttribute, NonHostAttributeNMismatched, NonHostAttributeNMatched,  Matched, Mismatched
 ```
 variable asserts {
   type = list(string)
-  default = ["HostAttributeNMismatched"]
-  // Support Condition = HostAttribute, HostAttributeNMismatched, HostAttributeNMatched, NonHostAttribute, NonHostAttributeNMismatched, NonHostAttributeNMatched,  Matched, Mismatched
+  default = ["Version", "HostAttributeNMismatched"]
 ```
-### Network : For each device, specify its Device, Device config, it client ports and line Carriers.
+### Network: For each device, specify its Device, Device config, it Client Ports and Line Carriers.
 ```
 variable network {
   type = object({
@@ -64,8 +63,8 @@ network = {
     }
   }
 ```
-### Bandwidth
-#### Hub Bandwidth: Defines the bandwidth to provisioned between Hub and each leaf. For each leaf, define the hub dscids to be assigned to the BW, and the hubdscgid and leafdscgid to be use to create the DSCG. Creates Hub and Leaf DSCGs.
+### Bandwidth: Specify both Hub and Leaf Bandwidths
+#### Hub Bandwidth: Defines the bandwidth to provisioned between Hub and each leaf. For each leaf, define the Hub DSC ids to be assigned to the BW, and the Hub DSCG id and Leaf DSCG id to be used to create the DSCG. Creates Hub DSCGs.
 ```
 variable "hub_bandwidth" {
   type = map(map(object({ hubdscgid = optional(string), leafdscgid = optional(string), hubdscidlist = optional(list(string)), leafdscidlist = optional(list(string)), direction = optional(string) })))
@@ -79,7 +78,7 @@ hub_bandwidth = {
   },
 }
 ```
-### Leaf bandwidth: Defines the bandwidth to provisioned between Hub and each leaf. For each leaf, define the hub dscids to be assigned to the BW, and the hubdscgid and leafdscgid to be use to create the DSCG. Creates Hub and Leaf DSCGs.
+### Leaf bandwidth: Defines the bandwidth to provisioned between Hub and each leaf. For each leaf, define the Hub DSC ids to be assigned to the BW, and the Hub DSCG id and Leaf DSCG id to be used to create the DSCG. Creates Leaf DSCGs.
 ```
 variable "leaf_bandwidth" {
   type = map(map(object({ hubdscgid = string, leafdscgid = string, hubdscidlist = list(string), leafdscidlist = list(string), direction = string
@@ -94,7 +93,7 @@ leaf_bandwidth = {
   }
 }
 ```
-### Services: Defines the local connections for each node in the network. each conection include the cliend id and DSCG id
+### Services: Defines the local connections for each node in the network. each conection include the Cliend id and DSCG id
 ```
 variable "client-2-dscg" {
   type = map(map(object({ clientindex = optional(number) // index to module_clients list
