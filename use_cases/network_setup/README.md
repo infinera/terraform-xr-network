@@ -1,15 +1,15 @@
 # Terraform XR Network Set Up
 This module will setup the constellation network based on the specified configuration.
 ## How to Run
-1. Go to the **network setup** directory or its clone directory
-2. Specify the input variables by updating the **network_setup.auto.tfvars** input file. 
-   1. The asserts
-   2. The network intent
-   3. The bandwidth intent
-   4. The sevice intent
-3. Execute "terraform apply" in usecase ***network setup*** directory or a clone 
+  1. Go to the **network setup** directory or its clone directory
+  2. Specify the input variables by updating the **network_setup.auto.tfvars** input file. 
+    1. The asserts
+    2. The network intent
+    3. The bandwidth intent
+    4. The sevice intent
+  3. Execute "terraform apply" in usecase ***network setup*** directory or a clone 
 ## Description
-Belew are the run sequence
+Below is the run sequence
 ### check for device with version mismatched
 If there is a device with version mismatched from the specified intent, the user can stop the run by specifying "Version" assertion
 ### check for device with mismatched Host Attribute
@@ -77,7 +77,7 @@ If there is a device with mismatched host attributesfrom the specified intent, T
    >  // type        = map(map(list(string)))
    >  type = map(map(object({ hubdscgid = string, leafdscgid = string, hubdscidlist = list(string), leafdscidlist = list(string), direction = string // possible values: bidi, us, ds
   })))
-2. Example
+1. Example
    >  leaf_bandwidth = {
   >   xr-regA_H1-L1 = {       
   >     xr-regA_H1-Hub-BW5173ds = { hubdscgid = "3", leafdscgid = "2", hubdscidlist = ["5"], leafdscidlist = ["1"], direction = "us" }}
@@ -92,7 +92,7 @@ If there is a device with mismatched host attributesfrom the specified intent, T
    >                            imc_outer_vid = optional(string)
    >                            emc = optional(string)
    >                            emc_outer_vid = optional(string) })))
-1. Example:
+2. Example:
     >  client-2-dscg = {
     >   xr-regA_H1-Hub = {
     >     lc-XR-SFO_12-1234-1-ds = { // hub tx -> leaf 1/2/3/4 - 100G Shared downstream
