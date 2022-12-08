@@ -22,7 +22,7 @@ module "setup_network" {
 }
 ```
 ## References
-* [setup_network_with_checks workflow](https://github.com/infinera/terraform-infinera-xr-modules/tree/main/workflows/setup_network)
+* [setup_network workflow](https://github.com/infinera/terraform-infinera-xr-modules/tree/main/workflows/setup_network)
 ## Description
 Below is the run sequence
 ### Set up constellation configuration
