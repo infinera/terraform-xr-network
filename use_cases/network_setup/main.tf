@@ -1,7 +1,7 @@
 
 module "setup_network_with_checks" {
-  //source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//workflows/setup_network_with_checks"
-  source = "../../../terraform-infinera-xr-modules/workflows/setup_network_with_checks"
+  source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//workflows/setup_network_with_checks"
+  //source = "../../../terraform-infinera-xr-modules/workflows/setup_network_with_checks"
   
   asserts = var.asserts
   network = var.network

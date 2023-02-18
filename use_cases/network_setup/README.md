@@ -14,8 +14,8 @@ This Use Case will setup the constellation network based on the specified config
 ```
   // setup_network_with_checks module shall provision the constellation network and support checks
   module "setup_network_with_checks" {
-    //source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//workflows/setup_network_with_checks"
-    source = "../../../terraform-infinera-xr-modules/workflows/setup_network_with_checks"
+    source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//workflows/setup_network_with_checks"
+    //source = "../../../terraform-infinera-xr-modules/workflows/setup_network_with_checks"
     
     asserts = var.asserts // specify assert (stop run) if one of the asserted condition is found. PLease see asserts definition below for the supported assertions
     network = var.network                  // specify the intent network
