@@ -20,7 +20,7 @@ variable "network" {
   description = "for each device, specify its config, it client port and line port "
   default = {
     configs = { portspeed = ""
-      trafficmode = "L2Mode"
+      trafficmode = "L1Mode"
       modulation  = ""
     }
     setup = {
