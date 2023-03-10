@@ -1,7 +1,7 @@
 
 module "network" {
   source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//tasks/network"
-  //source = "source = "../../tasks/network"
+  //source = "../../tasks/network"
 
   network = var.network
   leaf_bandwidth = var.leaf_bandwidth

@@ -1,7 +1,7 @@
 //
 module "network_device_replacement" {
-  source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//workflows/network_device_replacement"
-  //source = "../../../terraform-infinera-xr-modules/workflows/network_device_replacement"
+  //source = "git::https://github.com/infinera/terraform-infinera-xr-modules.git//workflows/network_device_replacement"
+  source = "../../../terraform-infinera-xr-modules/workflows/network_device_replacement"
   
   assert = var.assert
   network = var.network
